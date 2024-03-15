@@ -34,4 +34,13 @@ public static class PizzaService
 
         Pizzas.Remove(pizza);
     }
+
+    public static void Update(Pizza pizza)
+    {
+        int index = Pizzas.FindIndex(p => p.Id == pizza.Id);
+
+        if (index == -1) return;
+
+        Pizzas[index] = pizza;
+    }
 }
