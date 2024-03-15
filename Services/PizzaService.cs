@@ -15,4 +15,6 @@ public static class PizzaService
             new Pizza { Id= 2, Name = "Veggie", IsGlutenFree = true}
         };
     }
+
+    public static List<Pizza> GetAll() => Pizzas;
 }
