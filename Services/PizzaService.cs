@@ -25,4 +25,13 @@ public static class PizzaService
         pizza.Id = nextId++;
         Pizzas.Add(pizza);
     }
+
+    public static void Delete(int id)
+    {
+        Pizza? pizza = Get(id);
+
+        if (pizza is null) return;
+
+        Pizzas.Remove(pizza);
+    }
 }
