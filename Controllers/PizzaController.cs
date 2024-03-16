@@ -40,8 +40,8 @@ public class PizzaController : ControllerBase
         return BadRequest();
     }
 
-    [HttpPut]
-    public IActionResult Update(Pizza pizza)
+    [HttpPut("{id}")]
+    public IActionResult Update(int id, Pizza pizza)
     {
         if (pizza is Pizza)
         {
@@ -50,5 +50,13 @@ public class PizzaController : ControllerBase
         }
 
         return BadRequest();
+    }
+
+    [HttpDelete("{id}")]
+    public IActionResult Delete(int id)
+    {
+        
+        PizzaService.Delete(id);
+        return Ok();
     }
 }
