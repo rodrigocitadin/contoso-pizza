@@ -31,13 +31,8 @@ public class PizzaController : ControllerBase
     [HttpPost]
     public IActionResult Create(Pizza pizza)
     {
-        if (pizza is Pizza)
-        {
-            PizzaService.Add(pizza);
-            return Created();
-        }
-
-        return BadRequest();
+        PizzaService.Add(pizza);
+        return CreatedAtAction(nameof(Get), new { id = pizza.Id }, pizza);
     }
 
     [HttpPut("{id}")]
@@ -55,7 +50,7 @@ public class PizzaController : ControllerBase
     [HttpDelete("{id}")]
     public IActionResult Delete(int id)
     {
-        
+
         PizzaService.Delete(id);
         return Ok();
     }
