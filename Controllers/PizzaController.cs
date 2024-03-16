@@ -17,4 +17,14 @@ public class PizzaController : ControllerBase
     {
         return PizzaService.GetAll();
     }
+
+    [HttpPut("{id}")]
+    public ActionResult<Pizza> Get(int id)
+    {
+        var pizza = PizzaService.Get(id);
+
+        if (pizza == null) return NotFound();
+
+        return pizza;
+    }
 }
