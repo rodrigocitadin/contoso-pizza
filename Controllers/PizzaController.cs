@@ -38,13 +38,14 @@ public class PizzaController : ControllerBase
     [HttpPut("{id}")]
     public IActionResult Update(int id, Pizza pizza)
     {
-        if (pizza is Pizza)
-        {
-            PizzaService.Update(pizza);
-            return Ok();
-        }
+        if (id != pizza.Id) return BadRequest();
 
-        return BadRequest();
+        var existingPizza = PizzaService.Get(id);
+        if (existingPizza is null) return NotFound();
+
+        PizzaService.Update(pizza);
+
+        return NoContent();
     }
 
     [HttpDelete("{id}")]
