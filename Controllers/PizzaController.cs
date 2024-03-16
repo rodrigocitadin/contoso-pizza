@@ -27,4 +27,16 @@ public class PizzaController : ControllerBase
 
         return pizza;
     }
+
+    [HttpPost]
+    public IActionResult Create(Pizza pizza)
+    {
+        if (pizza is Pizza)
+        {
+            PizzaService.Add(pizza);
+            return Created();
+        }
+
+        return BadRequest();
+    }
 }
