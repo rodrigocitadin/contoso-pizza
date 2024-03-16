@@ -39,4 +39,16 @@ public class PizzaController : ControllerBase
 
         return BadRequest();
     }
+
+    [HttpPost]
+    public IActionResult Update(Pizza pizza)
+    {
+        if (pizza is Pizza)
+        {
+            PizzaService.Update(pizza);
+            return Ok();
+        }
+
+        return BadRequest();
+    }
 }
