@@ -18,7 +18,7 @@ public class PizzaController : ControllerBase
         return PizzaService.GetAll();
     }
 
-    [HttpPut("{id}")]
+    [HttpGet("{id}")]
     public ActionResult<Pizza> Get(int id)
     {
         var pizza = PizzaService.Get(id);
@@ -40,7 +40,7 @@ public class PizzaController : ControllerBase
         return BadRequest();
     }
 
-    [HttpPost]
+    [HttpPut]
     public IActionResult Update(Pizza pizza)
     {
         if (pizza is Pizza)
